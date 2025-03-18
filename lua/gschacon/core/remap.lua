@@ -28,3 +28,14 @@ vim.keymap.set("n", "<leader>sv", "<cmd>vsplit<CR>", { desc = "[S]plit [V]ertica
 
 vim.keymap.set("n", "gb", "<C-o>", { desc = "[G]o [B]ack" })
 vim.keymap.set("n", "gf", "<C-i>", { desc = "[G]o [F]oward" })
+
+
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", {desc = "Move Selected Lines Down"})
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", {desc = "Move Selected Lines Up"})
+
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
