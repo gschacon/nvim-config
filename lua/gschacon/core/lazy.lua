@@ -86,7 +86,9 @@ require("lazy").setup({
 		main = "ibl",
 		config = plugins.ibl.config,
 	},
-
+	{ -- Easy shortcuts for vim commentary
+		"tpope/vim-commentary",
+	},
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
