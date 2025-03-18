@@ -9,5 +9,7 @@ M.conform = require("gschacon.plugins.conform")
 M.cmp = require("gschacon.plugins.cmp")
 M.catppuccin = require("gschacon.plugins.catppuccin")
 M.mini = require("gschacon.plugins.mini")
+M.treesitter = require("gschacon.plugins.treesitter")
+M.ibl = require("gschacon.plugins.ibl")
 
 return M
