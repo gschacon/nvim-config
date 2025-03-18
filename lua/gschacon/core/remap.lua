@@ -17,10 +17,10 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 
-vim.keymap.set('n', '<C-S-l>', ':vertical resize -2<CR>')
-vim.keymap.set('n', '<C-S-j>', ':resize +2<CR>')
-vim.keymap.set('n', '<C-S-k>', ':resize -2<CR>')
-vim.keymap.set('n', '<C-S-h>', ':vertical resize +2<CR>')
+vim.keymap.set('n', '<C-S-l>', ':vertical resize -2<CR>', {desc = "Decrease window vertically"})
+vim.keymap.set('n', '<C-S-j>', ':resize +2<CR>', {desc = "Increase window horizontoally"})
+vim.keymap.set('n', '<C-S-k>', ':resize -2<CR>', {desc = "Decrease window horizontally"})
+vim.keymap.set('n', '<C-S-h>', ':vertical resize +2<CR>', {desc = "Increase window vertically"})
 
 
 vim.keymap.set("n", "<leader>so", "<cmd>split<CR>", { desc = "[S]plit H[o]rizontally" })

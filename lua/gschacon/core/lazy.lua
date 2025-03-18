@@ -63,6 +63,8 @@ require("lazy").setup({
 		config = function()
 			require("catppuccin").setup(require("gschacon.plugins.catppuccin").opts)
 			vim.cmd.colorscheme("catppuccin")
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 		end,
 	},
 	{ -- Highlight todo, notes, etc in comments
@@ -88,6 +90,10 @@ require("lazy").setup({
 	},
 	{ -- Easy shortcuts for vim commentary
 		"tpope/vim-commentary",
+	},
+	{
+		"theprimeagen/harpoon",
+		config = plugins.harpoon.config,
 	},
 }, {
 	ui = {

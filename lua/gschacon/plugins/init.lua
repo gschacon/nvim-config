@@ -11,5 +11,6 @@ M.catppuccin = require("gschacon.plugins.catppuccin")
 M.mini = require("gschacon.plugins.mini")
 M.treesitter = require("gschacon.plugins.treesitter")
 M.ibl = require("gschacon.plugins.ibl")
+M.harpoon = require("gschacon.plugins.harpoon")
 
 return M
