@@ -12,5 +12,7 @@ M.mini = require("gschacon.plugins.mini")
 M.treesitter = require("gschacon.plugins.treesitter")
 M.ibl = require("gschacon.plugins.ibl")
 M.harpoon = require("gschacon.plugins.harpoon")
+M.undotree = require("gschacon.plugins.undotree")
+M.fugitive = require("gschacon.plugins.fugitive")
 
 return M

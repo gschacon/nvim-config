@@ -91,10 +91,18 @@ require("lazy").setup({
 	{ -- Easy shortcuts for vim commentary
 		"tpope/vim-commentary",
 	},
-	{
+	{ -- Harpoon to jump to favorite files
 		"theprimeagen/harpoon",
 		config = plugins.harpoon.config,
 	},
+    { -- Undotree to manage undos
+        "mbbill/undotree",
+        config = plugins.undotree.config,
+    },
+    { -- Manage git inside nvim
+        "tpope/vim-fugitive",
+        config = plugins.fugitive.config,
+    },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
