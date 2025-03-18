@@ -55,7 +55,7 @@ require("lazy").setup({
 		dependencies = plugins.cmp.dependencies,
 		config = plugins.cmp.config,
 	},
-
+	--[[
 	{ -- You can easily change to a different colorscheme.
 		-- Change the name of the colorscheme plugin below, and then
 		-- change the command in the config to whatever the name of that colorscheme is.
@@ -77,7 +77,17 @@ require("lazy").setup({
 			vim.cmd.colorscheme("tokyonight-night")
 		end,
 	},
-
+]]
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		priority = 1000, -- Ensure the theme loads first
+		opts = plugins.catppuccin.opts,
+		config = function()
+			require("catppuccin").setup(require("gschacon.plugins.catppuccin").opts)
+			vim.cmd.colorscheme("catppuccin")
+		end,
+	},
 	-- Highlight todo, notes, etc in comments
 	{
 		"folke/todo-comments.nvim",
@@ -85,7 +95,6 @@ require("lazy").setup({
 		dependencies = { "nvim-lua/plenary.nvim" },
 		opts = { signs = false },
 	},
-
 	{ -- Collection of various small independent plugins/modules
 		"echasnovski/mini.nvim",
 		config = function()

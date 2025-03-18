@@ -7,5 +7,6 @@ M.lazydev = require("gschacon.plugins.lazydev")
 M.lsp = require("gschacon.plugins.lsp")
 M.conform = require("gschacon.plugins.conform")
 M.cmp = require("gschacon.plugins.cmp")
+M.catppuccin = require("gschacon.plugins.catppuccin")
 
 return M
