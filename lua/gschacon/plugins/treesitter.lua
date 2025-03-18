@@ -13,7 +13,7 @@ M.opts = {
 		"query",
 		"vim",
 		"vimdoc",
-        "python",
+		"python",
 	},
 	auto_install = true,
 	highlight = {
