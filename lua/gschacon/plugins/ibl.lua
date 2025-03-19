@@ -1,7 +1,7 @@
-local M = {}
-
-M.config = function()
-	require("ibl").setup({ indent = { char = { "┆" } } })
-end
-
-return M
+return { -- Add indent guidelines
+	"lukas-reineke/indent-blankline.nvim",
+	main = "ibl",
+	config = function()
+		require("ibl").setup({ indent = { char = { "┆" } } })
+	end,
+}

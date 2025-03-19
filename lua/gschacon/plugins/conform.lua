@@ -1,30 +1,26 @@
-local M = {}
-
-M.event = { "BufWritePre" }
-
-M.cmd = { "ConformInfo" }
-
-M.keys = {
-	{
-		"<leader>f",
-		function()
-			require("conform").format({ async = true, lsp_format = "fallback" })
-		end,
-		mode = "",
-		desc = "[F]ormat buffer",
+return { -- Autoformat
+    "stevearc/conform.nvim",
+	event = { "BufWritePre" },
+	cmd = { "ConformInfo" },
+	keys = {
+		{
+			"<leader>f",
+			function()
+				require("conform").format({ async = true, lsp_format = "fallback" })
+			end,
+			mode = "",
+			desc = "[F]ormat buffer",
+		},
+	},
+	opts = {
+		notify_on_error = false,
+		format_on_save = false,
+		formatters_by_ft = {
+			lua = { "stylua" },
+			python = { "black" },
+			c = { "clang-format" },
+			cpp = { "clang-format" },
+			json = { "clang-format" },
+		},
 	},
 }
-
-M.opts = {
-	notify_on_error = false,
-	format_on_save = false,
-	formatters_by_ft = {
-		lua = { "stylua" },
-		python = {"black"},
-        c = {"clang-format"},
-        cpp = {"clang-format"},
-        json = {"clang-format"}
-	},
-}
-
-return M
