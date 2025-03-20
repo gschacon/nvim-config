@@ -53,6 +53,13 @@ return {
             -- Hide .git folder on tree
 			filters = { custom = { "^.git$" } },
 			on_attach = my_on_attach,
+            hijack_netrw = false,
+            actions = {
+                open_file = {
+                    window_picker = { chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    }
+                } 
+            }
 		})
 
 		-- General keymaps
