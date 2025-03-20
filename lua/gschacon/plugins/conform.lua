@@ -1,5 +1,5 @@
 return { -- Autoformat
-    "stevearc/conform.nvim",
+	"stevearc/conform.nvim",
 	event = { "BufWritePre" },
 	cmd = { "ConformInfo" },
 	keys = {
@@ -21,6 +21,7 @@ return { -- Autoformat
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			json = { "clang-format" },
+			tex = { "tex-fmt" },
 		},
 	},
 }

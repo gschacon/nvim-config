@@ -14,6 +14,8 @@ M.opts = {
 		"vim",
 		"vimdoc",
 		"python",
+        "bibtex",
+        "latex",
 	},
 	auto_install = true,
 	highlight = {

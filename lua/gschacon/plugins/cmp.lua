@@ -62,6 +62,7 @@ return { -- Autocompletion
 				{ name = "luasnip" },
 				{ name = "path" },
 				{ name = "nvim_lsp_signature_help" },
+				{ name = "ltex" },
 			},
 		})
 	end,

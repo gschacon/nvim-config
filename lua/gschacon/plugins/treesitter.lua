@@ -16,6 +16,8 @@ return { -- Highlight, edit, and navigate code
 			"vim",
 			"vimdoc",
 			"python",
+            "latex",
+            "bibtex",
 		},
 		auto_install = true,
 		highlight = {

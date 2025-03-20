@@ -159,6 +159,44 @@ return { -- Main LSP Configuration
 					},
 				},
 			},
+			texlab = {
+				filetypes = { "tex", "bib" },
+				settings = {
+					texlab = {
+						build = {
+							executable = "latexmk",
+							args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+							forwardSearchAfter = false,
+							onSave = true,
+						},
+						forwardSearch = {
+							executable = "zathura",
+							args = { "--synctex-forward", "%l:1:%f", "%p" },
+						},
+						chktex = {
+							onOpenAndSave = true,
+							onEdit = true,
+						},
+						linting = {
+							onSave = true,
+							onEdit = true,
+						},
+					},
+				},
+			},
+			ltex = {
+				filetypes = { "markdown", "tex", "bib", "plaintext" },
+				settings = {
+					ltex = {
+						language = "auto",
+						additionalRules = {
+							enablePickyRuels = true,
+							motherTongue = "pt",
+						},
+						enabled = { "latex", "tex", "markdown", "plaintext" },
+					},
+				},
+			},
 		}
 
 		local ensure_installed = vim.tbl_keys(servers or {})
