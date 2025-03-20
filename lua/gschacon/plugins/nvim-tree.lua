@@ -16,12 +16,38 @@ return {
 			end
 
 			api.config.mappings.default_on_attach(bufnr)
+			local function copy_file_to()
+				local node = api.tree.get_node_under_cursor()
+				if not node then
+					vim.notify("No file selected!", vim.log.levels.ERROR)
+					return
+				end
 
+				local file_src = node.absolute_path
+				if not file_src then
+					vim.notify("Invalid file path!", vim.log.levels.ERROR)
+					return
+				end
+
+				local file_out = vim.fn.input("COPY TO: ", file_src, "file")
+				if file_out == "" then
+					vim.notify("No destination provided!", vim.log.levels.WARN)
+					return
+				end
+
+				local dir = vim.fn.fnamemodify(file_out, ":h")
+				vim.fn.system({ "mkdir", "-p", dir })
+				vim.fn.system({ "cp", "-R", file_src, file_out })
+
+				vim.notify("Copied to: " .. file_out, vim.log.levels.INFO)
+			end
 			vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 			vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 			vim.keymap.set("n", "h", api.tree.toggle_help, opts("Help"))
 			vim.keymap.set("n", "e", api.tree.expand_all, opts("Expand All"))
 			vim.keymap.set("n", "w", api.tree.collapse_all, opts("Expand All"))
+			vim.keymap.set("n", "ba", api.marks.toggle, opts("Create Bookmark"))
+			vim.keymap.set("n", "m", copy_file_to, opts("Copy File To"))
 		end
 
 		require("nvim-tree").setup({
@@ -50,16 +76,15 @@ return {
 				enable = false,
 				auto_open = false,
 			},
-            -- Hide .git folder on tree
+			-- Hide .git folder on tree
 			filters = { custom = { "^.git$" } },
 			on_attach = my_on_attach,
-            hijack_netrw = false,
-            actions = {
-                open_file = {
-                    window_picker = { chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    }
-                } 
-            }
+			hijack_netrw = false,
+			actions = {
+				open_file = {
+					window_picker = { chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ" },
+				},
+			},
 		})
 
 		-- General keymaps
