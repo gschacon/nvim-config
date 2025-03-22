@@ -5,6 +5,7 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
+		{ "b0o/nvim-tree-preview.lua", dependencies = { "nvim-lua/plenary.nvim", "3rd/image.nvim" } },
 	},
 	config = function()
 		-- Mappings when inside nvim-tree
@@ -41,6 +42,8 @@ return {
 
 				vim.notify("Copied to: " .. file_out, vim.log.levels.INFO)
 			end
+
+			local preview = require("nvim-tree-preview")
 			vim.keymap.set("n", "<Esc>", api.tree.close, opts("Close"))
 			vim.keymap.set("n", "?", api.tree.toggle_help, opts("Help"))
 			vim.keymap.set("n", "h", api.tree.toggle_help, opts("Help"))
@@ -48,6 +51,15 @@ return {
 			vim.keymap.set("n", "w", api.tree.collapse_all, opts("Expand All"))
 			vim.keymap.set("n", "ba", api.marks.toggle, opts("Create Bookmark"))
 			vim.keymap.set("n", "m", copy_file_to, opts("Copy File To"))
+			vim.keymap.set("n", "<Tab>", preview.watch, opts("Preview Permanently"))
+			vim.keymap.set("n", "<Esc>", preview.unwatch, opts("Close Preview/Unwatch"))
+			vim.keymap.set("n", "<C-d>", function()
+				return preview.scroll(4)
+			end, opts("Scroll Preview Down"))
+			vim.keymap.set("n", "<C-u>", function()
+				return preview.scroll(-4)
+			end, opts("Scroll Preview Up"))
+            vim.keymap.set('n', 'P', preview.node_under_cursor, opts 'Preview one file')
 		end
 
 		require("nvim-tree").setup({
