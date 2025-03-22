@@ -48,6 +48,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>h", group = "[H]arpoon", mode = { "n", "v" } },
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>l", group = "[L]aTeX" },
+			{ "<leader>m", group = "[M]olten" },
 		},
 	},
 }

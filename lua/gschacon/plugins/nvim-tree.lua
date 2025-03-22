@@ -5,7 +5,24 @@ return {
 	lazy = false,
 	dependencies = {
 		"nvim-tree/nvim-web-devicons",
-		{ "b0o/nvim-tree-preview.lua", dependencies = { "nvim-lua/plenary.nvim", "3rd/image.nvim" } },
+		{
+			"b0o/nvim-tree-preview.lua",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				{
+					"3rd/image.nvim",
+					opts = {
+						backend = "kitty", -- whatever backend you would like to use
+						max_width = 100,
+						max_height = 12,
+						max_height_window_percentage = math.huge,
+						max_width_window_percentage = math.huge,
+						window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
+						window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "" },
+					},
+				},
+			},
+		},
 	},
 	config = function()
 		-- Mappings when inside nvim-tree
@@ -59,7 +76,7 @@ return {
 			vim.keymap.set("n", "<C-u>", function()
 				return preview.scroll(-4)
 			end, opts("Scroll Preview Up"))
-            vim.keymap.set('n', 'P', preview.node_under_cursor, opts 'Preview one file')
+			vim.keymap.set("n", "P", preview.node_under_cursor, opts("Preview one file"))
 		end
 
 		require("nvim-tree").setup({
