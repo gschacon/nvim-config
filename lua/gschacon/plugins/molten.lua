@@ -45,13 +45,12 @@ return {
 		)
 		vim.keymap.set("n", "<localleader>md", ":MoltenDelete<CR>", { desc = "[M]olten [D]elete Cell", silent = true })
 
-		-- if you work with html outputs:
 		vim.keymap.set(
 			"n",
 			"<localleader>mb",
 			":MoltenOpenInBrowser<CR>",
 			{ desc = "[M]olten Open Output in [B]rowser", silent = true }
 		)
-		vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { desc = "[M]olten [I]nit}" })
+		vim.keymap.set("n", "<leader>mi", ":MoltenInit<CR>", { desc = "[M]olten [I]nit" })
 	end,
 }

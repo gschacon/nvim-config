@@ -49,6 +49,7 @@ return { -- Useful plugin to show you pending keybinds.
 			{ "<leader>g", group = "[G]it" },
 			{ "<leader>l", group = "[L]aTeX" },
 			{ "<leader>m", group = "[M]olten" },
+			{ "<leader>q", group = "[Q]uarto" },
 		},
 	},
 }
