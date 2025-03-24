@@ -19,6 +19,7 @@ return {
 				"python",
 				"latex",
 				"bibtex",
+                "r",
 			},
 			auto_install = true,
 			highlight = {

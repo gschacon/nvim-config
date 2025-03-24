@@ -145,6 +145,25 @@ return { -- Main LSP Configuration
 			-- rust_analyzer = {},
 			-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
 
+			r_language_server = {
+				filetypes = { "r" },
+				settings = {
+					r = {
+						diagnostics = {
+							enable = true,
+							linting = true,
+						},
+						completion = {
+							enable = true,
+							autoImport = true,
+						},
+						format = {
+							enable = true,
+							style = "tidyverse",
+						},
+					},
+				},
+			},
 			lua_ls = {
 				-- cmd = { ... },
 				-- filetypes = { ... },
@@ -185,7 +204,7 @@ return { -- Main LSP Configuration
 				},
 			},
 			ltex = {
-				filetypes = { "tex", "bib"},
+				filetypes = { "tex", "bib" },
 				settings = {
 					ltex = {
 						language = "auto",
@@ -193,7 +212,7 @@ return { -- Main LSP Configuration
 							enablePickyRules = true,
 							motherTongue = "pt",
 						},
-						enabled = { "latex", "tex"},
+						enabled = { "latex", "tex" },
 					},
 				},
 			},
