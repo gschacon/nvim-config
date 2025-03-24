@@ -51,3 +51,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.opt.timeoutlen = 1000
 vim.opt.ttimeoutlen = 0
+
+vim.g.python3_host_prog = vim.fn.expand("~/.pyenv/versions/main/bin/python3.12")
