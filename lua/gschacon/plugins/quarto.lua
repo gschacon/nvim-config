@@ -41,15 +41,15 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 			runner.run_all(true)
 		end, { desc = "[Q]uarto Run All cells of [A]ll languages", silent = true })
 
-        -- Keymaps for Python cells
+		-- Keymaps for Python cells
 
 		vim.keymap.set("n", "<leader>qnep", function()
-			local lines = {"", "```python", "", "```",""}
+			local lines = { "", "```python", "", "```", "" }
 			vim.cmd("normal! G")
 			vim.api.nvim_put(lines, "l", true, true)
 			local row = vim.api.nvim_buf_line_count(0) - 2
 			vim.api.nvim_win_set_cursor(0, { row, 0 })
-		end)
+		end, { desc = "[Q]uarto [N]ew at the [E]nd [P]ython Cell" })
 		vim.keymap.set(
 			"n",
 			"<leader>qnp",
@@ -62,21 +62,41 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 			":normal [b2k<CR>i<CR>```python<CR><CR>```<CR><Esc>2k",
 			{ desc = "[Q]uarto [O]ld [P]yton Cell", silent = true }
 		)
-        vim.keymap.set("n", "<S-Enter>", function()
-            runner.run_cell()
-            vim.cmd("normal ]b")
-        end)
-        vim.keymap.set("n","<A-Enter>", function()
-            runner.run_cell()
-            vim.cmd("normal ]b")
-            vim.cmd("normal! 2k")
-			local lines = {"", "```python", "", "```",""}
-            vim.api.nvim_put(lines, "l", true, true)
-            vim.cmd("normal! 3k")
-        end)
+		vim.keymap.set("n", "<S-Enter>", function()
+			runner.run_cell()
+			vim.cmd("normal ]b")
+		end)
+		vim.keymap.set("n", "<A-Enter>", function()
+			runner.run_cell()
+			vim.cmd("normal ]b")
+			vim.cmd("normal! 2k")
+			local lines = { "", "```python", "", "```", "" }
+			vim.api.nvim_put(lines, "l", true, true)
+			vim.cmd("normal! 3k")
+		end)
 
+		-- Keymaps for R cells
+
+		vim.keymap.set("n", "<leader>qner", function()
+			local lines = { "", "```R", "", "```", "" }
+			vim.cmd("normal! G")
+			vim.api.nvim_put(lines, "l", true, true)
+			local row = vim.api.nvim_buf_line_count(0) - 2
+			vim.api.nvim_win_set_cursor(0, { row, 0 })
+		end, { desc = "[Q]uarto [N]ew at the [E]nd [R] Cell" })
+		vim.keymap.set(
+			"n",
+			"<leader>qnr",
+			":normal ]b2k<CR>i<CR>```R<CR><CR>```<CR><Esc>2k",
+			{ desc = "[Q]uarto [N]ew [R] Cell", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>qor",
+			":normal [b2k<CR>i<CR>```R<CR><CR>```<CR><Esc>2k",
+			{ desc = "[Q]uarto [O]ld [R] Cell", silent = true }
+		)
 	end,
-
 
 	dependencies = {
 		"jmbuhr/otter.nvim",
