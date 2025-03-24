@@ -40,9 +40,45 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 		vim.keymap.set("n", "<leader>qA", function()
 			runner.run_all(true)
 		end, { desc = "[Q]uarto Run All cells of [A]ll languages", silent = true })
+
+        -- Keymaps for creating python cells
+
+		vim.keymap.set("n", "<leader>qnep", function()
+			local lines = {"", "```python", "", "```",""}
+			vim.cmd("normal! G")
+			vim.api.nvim_put(lines, "l", true, true)
+			local row = vim.api.nvim_buf_line_count(0) - 2
+			vim.api.nvim_win_set_cursor(0, { row, 0 })
+		end)
+
+		vim.keymap.set(
+			"n",
+			"<leader>qnp",
+			":normal ]b2k<CR>i<CR>```python<CR><CR>```<CR><Esc>2k",
+			{ desc = "[Q]uarto [N]ew [P]yton Cell", silent = true }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>qop",
+			":normal [b2k<CR>i<CR>```python<CR><CR>```<CR><Esc>2k",
+			{ desc = "[Q]uarto [O]ld [P]yton Cell", silent = true }
+		)
+
+        vim.keymap.set("n","<S-Enter>", function()
+            runner.run_cell()
+            vim.cmd("normal ]b")
+            vim.cmd("normal! 2k")
+			local lines = {"", "```python", "", "```",""}
+            vim.api.nvim_put(lines, "l", true, true)
+            vim.cmd("normal! 3k")
+        end)
+
 	end,
+
 
 	dependencies = {
 		"jmbuhr/otter.nvim",
+		"nvim-treesitter/nvim-treesitter",
+		"nvim-treesitter/nvim-treesitter-textobjects",
 	},
 }

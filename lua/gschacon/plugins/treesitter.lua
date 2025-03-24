@@ -32,7 +32,7 @@ return {
 			textobjects = {
 				move = {
 					enable = true,
-					set_jumps = false, -- you can change this if you want.
+					set_jumps = true, -- you can change this if you want.
 					goto_next_start = {
 						--- ... other keymaps
 						["]b"] = { query = "@code_cell.inner", desc = "next code block" },
