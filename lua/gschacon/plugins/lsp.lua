@@ -185,15 +185,15 @@ return { -- Main LSP Configuration
 				},
 			},
 			ltex = {
-				filetypes = { "markdown", "tex", "bib", "plaintext" },
+				filetypes = { "tex", "bib"},
 				settings = {
 					ltex = {
 						language = "auto",
 						additionalRules = {
-							enablePickyRuels = true,
+							enablePickyRules = true,
 							motherTongue = "pt",
 						},
-						enabled = { "latex", "tex", "markdown", "plaintext" },
+						enabled = { "latex", "tex"},
 					},
 				},
 			},

@@ -41,7 +41,7 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 			runner.run_all(true)
 		end, { desc = "[Q]uarto Run All cells of [A]ll languages", silent = true })
 
-        -- Keymaps for creating python cells
+        -- Keymaps for Python cells
 
 		vim.keymap.set("n", "<leader>qnep", function()
 			local lines = {"", "```python", "", "```",""}
@@ -50,7 +50,6 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 			local row = vim.api.nvim_buf_line_count(0) - 2
 			vim.api.nvim_win_set_cursor(0, { row, 0 })
 		end)
-
 		vim.keymap.set(
 			"n",
 			"<leader>qnp",
@@ -63,8 +62,11 @@ return { -- requires plugins in lua/plugins/treesitter.lua and lua/plugins/lsp.l
 			":normal [b2k<CR>i<CR>```python<CR><CR>```<CR><Esc>2k",
 			{ desc = "[Q]uarto [O]ld [P]yton Cell", silent = true }
 		)
-
-        vim.keymap.set("n","<S-Enter>", function()
+        vim.keymap.set("n", "<S-Enter>", function()
+            runner.run_cell()
+            vim.cmd("normal ]b")
+        end)
+        vim.keymap.set("n","<A-Enter>", function()
             runner.run_cell()
             vim.cmd("normal ]b")
             vim.cmd("normal! 2k")
