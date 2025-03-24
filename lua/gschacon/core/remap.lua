@@ -40,3 +40,30 @@ vim.keymap.set("n", "<leader>sp", function()
 	vim.opt.spell = not vim.opt.spell:get()
 	print("Spell check " .. (vim.opt.spell:get() and "enabled" or "disabled"))
 end, { desc = "Toggle [S]pell [C]heck" })
+
+vim.keymap.set("n", "<leader>jf", function()
+	-- Get the current file name without extension
+	local file_name = vim.fn.expand("%:r") -- Removes extension
+
+	-- Open the corresponding .md file in the same window
+	vim.cmd("edit " .. file_name .. ".md")
+
+	-- Format the markdown file
+	require("conform").format({ async = false, lsp_format = "fallback" })
+
+	-- Save the markdown file
+	vim.cmd("write")
+
+	-- Return to the original .ipynb file
+	vim.cmd("edit " .. file_name .. ".ipynb")
+
+	-- Run jupytext commands
+	vim.fn.system("jupytext --set-formats ipynb,md " .. file_name .. ".ipynb")
+	vim.fn.system("jupytext --sync " .. file_name .. ".ipynb")
+
+	-- Reload the .ipynb file to reflect any external changes
+	vim.cmd("edit")
+
+	-- Show a message indicating completion
+	vim.notify("Jupytext sync complete!", vim.log.levels.INFO)
+end, { desc = "[J]upytext Auto [F]ormat", noremap = true, silent = true })

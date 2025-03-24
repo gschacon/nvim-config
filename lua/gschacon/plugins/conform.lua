@@ -22,6 +22,8 @@ return { -- Autoformat
 			cpp = { "clang-format" },
 			json = { "clang-format" },
 			tex = { "tex-fmt" },
+			markdown = { "mdsf" },
+			ipynb = { "mdsf" },
 		},
 	},
 }
