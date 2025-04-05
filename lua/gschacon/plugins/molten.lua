@@ -21,6 +21,12 @@ return {
 		)
 		vim.keymap.set(
 			"n",
+			"<localleader>mm",
+			":MoltenImagePopup<CR>",
+			{ desc = "[M]olten I[m]age Show", silent = true }
+		)
+		vim.keymap.set(
+			"n",
 			"<localleader>mo",
 			":noautocmd MoltenEnterOutput<CR>",
 			{ desc = "[M]olten [O]pen Output Window", silent = true }

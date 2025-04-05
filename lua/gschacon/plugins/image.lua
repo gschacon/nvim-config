@@ -2,8 +2,8 @@ return { -- see the image.nvim readme for more information about configuring thi
 	"3rd/image.nvim",
 	opts = {
 		backend = "kitty", -- whatever backend you would like to use
-		max_width = 100,
-		max_height = 12,
+		max_width = 10000,
+		max_height = 1200,
 		max_height_window_percentage = math.huge,
 		max_width_window_percentage = math.huge,
 		window_overlap_clear_enabled = true, -- toggles images when windows are overlapped
