@@ -95,7 +95,7 @@ return {
 				auto_open = false,
 			},
 			-- Hide .git folder on tree
-			filters = { custom = { "^.git$" } },
+			filters = { git_ignored = false, custom = { "^.git$" } },
 			on_attach = my_on_attach,
 			hijack_netrw = false,
 			actions = {
