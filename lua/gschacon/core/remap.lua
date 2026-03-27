@@ -67,3 +67,5 @@ vim.keymap.set("n", "<leader>jf", function()
 	-- Show a message indicating completion
 	vim.notify("Jupytext sync complete!", vim.log.levels.INFO)
 end, { desc = "[J]upytext Auto [F]ormat", noremap = true, silent = true })
+
+vim.keymap.set("n", "<leader>rp", ":split | terminal python3 %<CR>", { desc = "[R]un [P]ython file" })
