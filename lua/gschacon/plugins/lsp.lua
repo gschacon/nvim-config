@@ -205,6 +205,11 @@ return { -- Main LSP Configuration
 			},
 			ltex = {
 				filetypes = { "tex", "bib" },
+				-- Java 24+ caps XML entity size; LanguageTool's grammar.xml exceeds it
+				-- and ltex-ls dies with "Could not activate rules". Lift the limit.
+				cmd_env = {
+					JAVA_OPTS = "-Djdk.xml.totalEntitySizeLimit=0 -Djdk.xml.maxGeneralEntitySizeLimit=0",
+				},
 				settings = {
 					ltex = {
 						language = "auto",
@@ -224,19 +229,17 @@ return { -- Main LSP Configuration
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+		-- mason-lspconfig v2 dropped `handlers`; register per-server overrides with
+		-- vim.lsp.config so they merge onto nvim-lspconfig's defaults, then let
+		-- mason-lspconfig's automatic_enable call vim.lsp.enable() for installed servers.
+		vim.lsp.config("*", { capabilities = capabilities })
+		for server_name, server in pairs(servers) do
+			vim.lsp.config(server_name, server)
+		end
+
 		require("mason-lspconfig").setup({
 			ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
 			automatic_installation = false,
-			handlers = {
-				function(server_name)
-					local server = servers[server_name] or {}
-					-- This handles overriding only values explicitly passed
-					-- by the server configuration above. Useful when disabling
-					-- certain features of an LSP (for example, turning off formatting for ts_ls)
-					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
-				end,
-			},
 		})
 	end,
 }
